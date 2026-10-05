@@ -4,7 +4,7 @@
 
 # COMMAND ----------
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import arxiv
@@ -50,7 +50,7 @@ def fetch_arxiv_papers(query: str = "cat:cs.AI OR cat:cs.LG", max_results: int =
                 "categories": ", ".join(result.categories),
                 "pdf_url": result.pdf_url,
                 "primary_category": result.primary_category,
-                "ingestion_timestamp": datetime.now(timezone.utc).isoformat(),
+                "ingestion_timestamp": datetime.now(UTC).isoformat(),
                 "processed": None,
                 "volume_path": None,
             }
